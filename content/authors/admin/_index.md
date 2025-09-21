@@ -1,10 +1,10 @@
 ---
 # Display name
-title: Odelia Melamed
+title: Ariel Shaulker
 
 # Full name (for SEO)
-first_name: Odelia
-last_name: Melamed
+first_name: Ariel
+last_name: Shaulker
 
 # Status emoji
 status:
@@ -19,16 +19,15 @@ role: PhD student
 # Organizations/Affiliations to show in About widget
 organizations:
   - name: Weizmann Institute of Science
-    url: https://www.weizmann.ac.il/pages/
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include Adversarial Examples in ML, Theoretical Machine Learning, Cryptography and TCS.
+bio: My research interests include algorithmic game theory, and algorithms. 
 
 # Interests to show in About widget
 interests:
-  - Adversarial Examples in ML
-  - Theoretical Machine Learning
-  - Cryptography and TCS
+  - Algorithmic Game Theory
+  - Mechanism Design
+  - Algorithms
 
 # Education to show in About widget
 education:
