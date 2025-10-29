@@ -7,6 +7,10 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
+    "setup": "npm ci",
+    "deps:check": "npx npm-check-updates",
+    "deps:update": "npx npm-check-updates -u && npm install",
+    "update:all": "npm update",
     "preview": "vite preview",
     "deploy": "vite build && gh-pages -d dist"
   },
