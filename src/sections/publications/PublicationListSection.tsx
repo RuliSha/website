@@ -1,5 +1,6 @@
 import { memo } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
+import ReactMarkdown from 'react-markdown'
 
 import type { PublicationListSectionContent } from '../../lib/types'
 import type { SectionComponentProps } from '../types'
@@ -19,8 +20,7 @@ function PublicationListSection({
     ? {}
     : {
         initial: 'hidden',
-        whileInView: 'visible',
-        viewport: { once: true, amount: 0.3 },
+        animate: 'visible',
         transition: { staggerChildren: 0.1 },
       }
 
@@ -55,8 +55,9 @@ function PublicationListSection({
                     item.title
                   )}
                 </h3>
-                <p className="pub-card__authors">{item.authors}</p>
-                {item.summary ? <p className="pub-card__summary">{item.summary}</p> : null}
+                <div className="pub-card__authors">
+                  <ReactMarkdown>{item.authors}</ReactMarkdown>
+                </div>
                 {item.tags?.length ? (
                   <ul className="pub-card__tags">
                     {item.tags.map((tag) => (

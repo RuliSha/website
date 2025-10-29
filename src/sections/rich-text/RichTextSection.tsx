@@ -1,5 +1,10 @@
 import { createElement, memo } from 'react'
+import type { ReactNode } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
+import { SiDblp } from 'react-icons/si'
+import { FaGraduationCap } from 'react-icons/fa'
+import { MdEmail } from 'react-icons/md'
+import meImg from '../../assets/me.png'
 
 import type {
   RichTextBlock,
@@ -17,9 +22,55 @@ const spotlightVariant = {
   visible: { opacity: 1, y: 0 },
 }
 
+function parseInlineLinks(text: string): Array<ReactNode> {
+  const parts: Array<string | ReactNode> = []
+  const regex = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g
+  let lastIndex = 0
+  let match: RegExpExecArray | null
+
+  while ((match = regex.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push(text.slice(lastIndex, match.index))
+    }
+
+    const [, label, url] = match
+    parts.push(
+      <a key={parts.length} href={url} target="_blank" rel="noreferrer noopener">
+        {label}
+      </a>,
+    )
+
+    lastIndex = regex.lastIndex
+  }
+
+  if (lastIndex < text.length) {
+    parts.push(text.slice(lastIndex))
+  }
+
+  const result: ReactNode[] = []
+  parts.forEach((part, index) => {
+    if (typeof part === 'string') {
+      const lines = part.split('\n')
+      lines.forEach((line, lineIndex) => {
+        if (line) {
+          result.push(line)
+        }
+        if (lineIndex < lines.length - 1) {
+          result.push(<br key={`br-${index}-${lineIndex}`} />)
+        }
+      })
+    } else {
+      result.push(part)
+    }
+  })
+
+  return result
+}
+
 function renderBlock(block: RichTextBlock) {
+
   if (block.type === 'paragraph') {
-    return <p className="rt-block">{block.text}</p>
+    return <p className="rt-block">{parseInlineLinks(block.text)}</p>
   }
 
   if (block.type === 'heading') {
@@ -34,7 +85,7 @@ function renderBlock(block: RichTextBlock) {
       <ul className={`rt-list rt-list--${block.style}`}>
         {block.items.map((item) => (
           <li key={item} className="rt-list-item">
-            {item}
+            {parseInlineLinks(item)}
           </li>
         ))}
       </ul>
@@ -83,7 +134,8 @@ function RichTextSection({
     <section
       id={data.slug}
       className={`section section--rich-text ${isActive ? 'section--active' : ''}`}
-      aria-labelledby={`${data.slug}-title`}
+      aria-label={data.showTitle === false ? data.title : undefined}
+      aria-labelledby={data.showTitle !== false ? `${data.slug}-title` : undefined}
     >
       <div className="section__inner">
         <div
@@ -91,11 +143,21 @@ function RichTextSection({
         >
           {hasProfileColumn ? (
             <motion.div className="rt-profile" {...heroMotionProps}>
-              {hero?.image?.src ? (
-                <motion.figure className="rt-profile__portrait" variants={paragraphVariant}>
-                  <img src={hero.image.src} alt={hero.image.alt ?? ''} loading="lazy" />
-                </motion.figure>
-              ) : null}
+              <motion.figure className="rt-profile__portrait" variants={paragraphVariant}>
+                <img src={meImg} alt={hero?.image?.alt ?? ''} loading="lazy" />
+              </motion.figure>
+
+              <div className="rt-social-links">
+                <a href="mailto:ariel.shaulker@gmail.com" aria-label="Email">
+                  <MdEmail />
+                </a>
+                <a href="https://scholar.google.com/citations?view_op=list_works&hl=en&authuser=1&user=jausq24AAAAJ" aria-label="Google Scholar">
+                  <FaGraduationCap />
+                </a>
+                <a href="https://dblp.org/pid/270/0805.html" aria-label="DBLP">
+                  <SiDblp />
+                </a>
+              </div>
 
               {hero?.eyebrow ? (
                 <motion.p className="rt-profile__role" variants={paragraphVariant}>
@@ -118,9 +180,11 @@ function RichTextSection({
 
           <div className="rt-main">
             <motion.header className="rt-header" {...heroMotionProps}>
-              <motion.h2 id={`${data.slug}-title`} className="rt-title" variants={paragraphVariant}>
-                {data.title}
-              </motion.h2>
+              {data.showTitle !== false && (
+                <motion.h2 id={`${data.slug}-title`} className="rt-title" variants={paragraphVariant}>
+                  {data.title}
+                </motion.h2>
+              )}
 
               {hero?.headline ? (
                 <motion.h3 className="rt-headline" variants={paragraphVariant}>
@@ -135,7 +199,7 @@ function RichTextSection({
               ) : null}
               {content.lead ? (
                 <motion.p className="rt-lead" variants={paragraphVariant}>
-                  {content.lead}
+                  {parseInlineLinks(content.lead)}
                 </motion.p>
               ) : null}
             </motion.header>

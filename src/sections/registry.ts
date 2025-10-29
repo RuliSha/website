@@ -1,4 +1,6 @@
 import { lazy, type LazyExoticComponent } from "react";
+import RichTextSection from "./rich-text/RichTextSection";
+import PublicationListSection from "./publications/PublicationListSection";
 
 import type { SectionComponentType } from "../lib/types";
 import type {
@@ -30,17 +32,26 @@ export function getLazySectionComponent<
   if (cached) {
     return cached as LazyExoticComponent<SectionComponentFor<TKey>>;
   }
+  // Prefer static (already-imported) components for performance-critical
+  // sections. Wrap them in a resolved promise so callers can treat the
+  // result as a LazyExoticComponent and continue to render inside
+  // <Suspense> uniformly.
+  let component: LazyExoticComponent<GenericSectionComponent> | undefined;
 
-  const loader = loaders[type];
+  if (type === "rich-text") {
+    component = lazy(() => Promise.resolve({ default: RichTextSection })) as LazyExoticComponent<GenericSectionComponent>;
+  } else if (type === "publication-list") {
+    component = lazy(() => Promise.resolve({ default: PublicationListSection })) as LazyExoticComponent<GenericSectionComponent>;
+  } else {
+    const loader = loaders[type];
 
-  if (!loader) {
-    throw new Error(`Missing renderer for section type "${type as string}"`);
+    if (!loader) {
+      throw new Error(`Missing renderer for section type "${type as string}"`);
+    }
+
+    component = lazy(loader) as LazyExoticComponent<GenericSectionComponent>;
   }
 
-  const component = lazy(
-    loader
-  ) as LazyExoticComponent<GenericSectionComponent>;
   componentCache.set(type, component);
-
   return component as LazyExoticComponent<SectionComponentFor<TKey>>;
 }

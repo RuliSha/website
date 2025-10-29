@@ -2,44 +2,39 @@ slug: publications
 title: Publications
 order: 2
 component: publication-list
-description: Selected writing, research, and talks exploring design systems and data-enabled collaboration.
+# description: Selected writing, research, and talks exploring design systems and data-enabled collaboration.
 content:
   items:
-    - title: "Systems that Listen: Measuring the Pulse of Design Libraries"
-      primaryUrl: https://example.com/systems-that-listen
-      authors: D. Rivera, L. Chen
-      venue: Design Systems Summit
+    - title: "Bilateral Trade with Interdependent Values: Information vs. Approximation"
+      primaryUrl: https://arxiv.org/pdf/2506.23896
+      authors: With [Shahar Dobzinski](https://www.cs.huji.ac.il/~shahard/), [Alon Eden](https://www.cs.huji.ac.il/~aloneden/), [Kira Goldner](https://www.kiragoldner.com/), and [Thodoris Tsilivis](https://sites.google.com/view/theotsilivis/home).
+      venue: ACM Conference on Economics and Computation (EC)
+      year: 2025
+      # links:
+      #   - label: Slides
+      #     url: https://example.com/systems-that-listen/slides
+      #   - label: Recording
+      #     url: https://example.com/systems-that-listen/video
+    - title: "Multi-parameter Mechanisms for Consumer Surplus Maximization"
+      primaryUrl: https://arxiv.org/pdf/2402.16972
+      authors:  With [Tomer Ezra](https://tomer-ezra.github.io/) and [Daniel Schoepflin](https://danschoepflin.github.io/).
+      venue: ACM Symposium on Theory of Computing (STOC)
+      year: 2025
+      # links:
+      #   - label: Read article
+      #     url: https://example.com/evidence-maps
+    - title: "Bilateral Trade with Correlated Values"
+      primaryUrl: https://arxiv.org/pdf/2308.09964
+      authors:  With [Shahar Dobzinski](https://www.cs.huji.ac.il/~shahard/).
+      venue: ACM Symposium on Theory of Computing (STOC)
       year: 2024
-      summary: Introduced an instrumentation model for tracking accessibility and adoption signals across distributed component libraries.
-      tags:
-        - Design Systems
-        - Accessibility
-      links:
-        - label: Slides
-          url: https://example.com/systems-that-listen/slides
-        - label: Recording
-          url: https://example.com/systems-that-listen/video
-    - title: Bridging Research and Delivery with Shared Evidence Maps
-      primaryUrl: https://example.com/evidence-maps
-      authors: D. Rivera
-      venue: Product Research Quarterly
+    - title: "Rigidity in Mechanism Design and Its Applications"
+      primaryUrl: https://arxiv.org/pdf/2212.09847
+      authors:  With [Shahar Dobzinski](https://www.cs.huji.ac.il/~shahard/).
+      venue: Innovations in Theoretical Computer Science (ITCS)
       year: 2023
-      summary: Case study on building evidence maps that align customer insights with roadmap prioritization.
-      tags:
-        - Research Ops
-        - Collaboration
-      links:
-        - label: Read article
-          url: https://example.com/evidence-maps
-    - title: Designing for Data Trustworthiness
-      primaryUrl: https://example.com/data-trustworthiness
-      authors: D. Rivera, P. O'Neal
-      venue: North America UX Conference
-      year: 2022
-      summary: Framework for communicating uncertainty in data-rich experiences using progressive disclosure patterns.
-      tags:
-        - Data Visualization
-        - UX
-      links:
-        - label: Case study
-          url: https://example.com/data-trustworthiness
+    - title: "Lower Bounds for Truthful Scheduling"
+      primaryUrl: https://arxiv.org/pdf/2007.04362
+      authors:  With [Shahar Dobzinski](https://www.cs.huji.ac.il/~shahard/).
+      venue:  preprint arXiv:2007.04362
+      year: 2020

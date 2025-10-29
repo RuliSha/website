@@ -62,10 +62,7 @@ function applyTheme(
   const root = document.documentElement
   const palette = definition.schemes[scheme].colors
   const { spacing, radii, typography, layout } = definition
-  const shadowTokens = {
-    ...definition.shadows,
-    ...definition.schemes[scheme].shadows,
-  }
+  const shadowTokens = { ...definition.shadows, ...definition.schemes[scheme].shadows }
 
   const cssVariables: Record<string, string> = {
     '--color-background': palette.background,

@@ -18,6 +18,9 @@
   --layout-max-width-narrow: 720px;
   --layout-section-gap: 160px;
   --layout-nav-height: 72px;
+
+  --font-size-xl: 18px;
+  
   --space-2xs: 4px;
   --space-xs: 8px;
   --space-sm: 12px;
@@ -30,6 +33,9 @@
   --radius-md: 16px;
   --radius-pill: 999px;
   --shadow-floating: 0 30px 80px -50px rgba(2, 6, 23, 0.35);
+
+  --portrait-scale: 1.2;
+  --portrait-translate-y: 0px;
 }
 
 * {
@@ -103,7 +109,7 @@ section {
   display: flex;
   justify-content: center;
   padding-inline: var(--space-lg);
-  padding-block: clamp(var(--space-2xl), 12vh, var(--layout-section-gap));
+  padding-block: clamp(var(--space-2xl), 6vh, var(--layout-section-gap));
   transition: transform 320ms ease, opacity 320ms ease;
 }
 
@@ -133,6 +139,7 @@ section {
   font-family: var(--font-family-heading);
   font-weight: 600;
   letter-spacing: -0.01em;
+  font-size: xx-large;
 }
 
 .section__description {
@@ -404,7 +411,7 @@ section {
   border-radius: 50%;
   overflow: hidden;
   box-shadow: var(--shadow-floating);
-  border: 3px solid color-mix(in srgb, var(--color-surface) 70%, transparent);
+  border: 3px solid var(--color-border);
   background: linear-gradient(135deg, color-mix(in srgb, var(--color-primary) 12%, transparent), color-mix(in srgb, var(--color-surface) 96%, transparent));
   justify-self: start;
 }
@@ -414,6 +421,12 @@ section {
   height: 100%;
   object-fit: cover;
   display: block;
+  /* Use object-position to shift the image within the frame (this moves the
+     image content before clipping by the circular container). Use transform
+     only for scaling so zoom happens around the image center. */
+  transform-origin: center center;
+  transform: scale(var(--portrait-scale));
+  transition: transform 240ms ease, object-position 240ms ease;
 }
 
 .rt-profile__role {
@@ -428,12 +441,12 @@ section {
 
 .rt-main {
   display: grid;
-  gap: var(--space-2xl);
+  gap: var(--space-lg);
 }
 
 .rt-header {
   display: grid;
-  gap: var(--space-sm);
+  gap: var(--space-2xs);
 }
 
 .rt-title {
@@ -456,7 +469,7 @@ section {
   margin: 0;
   font-family: var(--font-family-heading);
   font-weight: 600;
-  font-size: clamp(2rem, 3vw, 3.25rem);
+  font-size: clamp(1.5rem, 2.5vw, 2.5rem);
   letter-spacing: -0.02em;
 }
 
@@ -548,7 +561,7 @@ section {
 
 .pub-card {
   display: grid;
-  gap: var(--space-sm);
+  gap: var(--space-xs);
   padding: var(--space-xl);
   background: linear-gradient(
     140deg,
@@ -607,11 +620,17 @@ section {
   transform: translateY(-1px);
 }
 
-.pub-card__authors,
-.pub-card__summary {
+.pub-card__authors {
   margin: 0;
   color: var(--color-text-muted);
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-snug);
 }
+
+.pub-card__authors p {
+  margin: 0;
+}
+
 
 .pub-card__tags {
   display: flex;
@@ -764,3 +783,48 @@ section {
     gap: var(--space-xs);
   }
 }
+
+.rt-social-links {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-xl);
+  font-size: 2rem;
+}
+
+.rt-social-links a {
+  position: relative;
+  color: var(--color-text-muted);
+  transition: color 160ms ease, transform 200ms ease;
+}
+
+.rt-social-links a:hover,
+.rt-social-links a:focus-visible {
+  color: var(--color-primary);
+  transform: translateY(-6px);
+}
+
+.rt-social-links a::before {
+  content: attr(aria-label);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--color-text);
+  color: var(--color-background);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 160ms ease, transform 160ms ease;
+  transform: translateX(-50%) translateY(4px);
+}
+
+.rt-social-links a:hover::before,
+.rt-social-links a:focus-visible::before {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+

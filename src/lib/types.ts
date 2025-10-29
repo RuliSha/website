@@ -49,6 +49,7 @@ export interface BaseSectionContent {
   order: number;
   component: string;
   description?: string;
+  showTitle?: boolean;
 }
 
 export interface RichTextBlockHeading {
