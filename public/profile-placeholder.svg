@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="320" height="320" viewBox="0 0 320 320"
+    xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+    <title id="title">Profile placeholder</title>
+    <desc id="desc">Abstract gradient circle used as a portrait placeholder</desc>
+    <defs>
+        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#2563eb" />
+            <stop offset="50%" stop-color="#7c3aed" />
+            <stop offset="100%" stop-color="#14b8a6" />
+        </linearGradient>
+    </defs>
+    <circle cx="160" cy="160" r="150" fill="url(#gradient)" />
+    <circle cx="160" cy="130" r="60" fill="rgba(248, 250, 252, 0.75)" />
+    <path d="M80 260c12-48 52-82 80-82s68 34 80 82" fill="rgba(248, 250, 252, 0.55)" />
+</svg>

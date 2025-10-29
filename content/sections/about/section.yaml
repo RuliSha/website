@@ -1,0 +1,38 @@
+slug: about
+title: About
+order: 1
+component: rich-text
+hero:
+  eyebrow: Senior Research Engineer
+  headline: Building thoughtful experiences with data and design systems.
+  subtitle: Blending human-centered discovery with engineering rigor to deliver resilient, inclusive products.
+  image:
+    src: /profile-placeholder.svg
+    alt: Portrait of Daniela Rivera
+content:
+  lead: I help teams translate complex ideas into elegant, accessible interfaces that scale.
+  blocks:
+    - type: paragraph
+      text: >-
+        Over the last decade I've partnered with research, product, and design teams across
+        startups and Fortune 100 companies. I specialize in TypeScript-forward platforms,
+        system design, and the workflows that keep cross-functional teams moving.
+    - type: paragraph
+      text: >-
+        My work bridges discovery and delivery: mapping user intent, orchestrating reusable
+        component systems, and measuring the outcomes that matter most.
+    - type: list
+      style: unordered
+      title: What I'm focused on right now
+      items:
+        - Scaling human-centered research into design system foundations.
+        - Instrumenting observability pipelines for design quality.
+        - Mentoring engineers on accessible front-end architectures.
+spotlight:
+  items:
+    - label: Experience
+      value: "10+ years"
+    - label: Location
+      value: Remote • UTC−5
+    - label: Collaboration
+      value: Research, Design, Engineering

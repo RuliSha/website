@@ -1,0 +1,45 @@
+slug: publications
+title: Publications
+order: 2
+component: publication-list
+description: Selected writing, research, and talks exploring design systems and data-enabled collaboration.
+content:
+  items:
+    - title: "Systems that Listen: Measuring the Pulse of Design Libraries"
+      primaryUrl: https://example.com/systems-that-listen
+      authors: D. Rivera, L. Chen
+      venue: Design Systems Summit
+      year: 2024
+      summary: Introduced an instrumentation model for tracking accessibility and adoption signals across distributed component libraries.
+      tags:
+        - Design Systems
+        - Accessibility
+      links:
+        - label: Slides
+          url: https://example.com/systems-that-listen/slides
+        - label: Recording
+          url: https://example.com/systems-that-listen/video
+    - title: Bridging Research and Delivery with Shared Evidence Maps
+      primaryUrl: https://example.com/evidence-maps
+      authors: D. Rivera
+      venue: Product Research Quarterly
+      year: 2023
+      summary: Case study on building evidence maps that align customer insights with roadmap prioritization.
+      tags:
+        - Research Ops
+        - Collaboration
+      links:
+        - label: Read article
+          url: https://example.com/evidence-maps
+    - title: Designing for Data Trustworthiness
+      primaryUrl: https://example.com/data-trustworthiness
+      authors: D. Rivera, P. O'Neal
+      venue: North America UX Conference
+      year: 2022
+      summary: Framework for communicating uncertainty in data-rich experiences using progressive disclosure patterns.
+      tags:
+        - Data Visualization
+        - UX
+      links:
+        - label: Case study
+          url: https://example.com/data-trustworthiness

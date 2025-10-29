@@ -1,0 +1,55 @@
+defaultScheme: system
+schemes:
+  light:
+    colors:
+      background: "#f8fafc"
+      surface: "#ffffff"
+      surfaceAlt: "#eef2ff"
+      text: "#0f172a"
+      textMuted: "#475569"
+      primary: "#2563eb"
+      primaryContrast: "#f8fafc"
+      accent: "#14b8a6"
+      border: "#dbe2f0"
+    shadows:
+      medium: "0 18px 40px -24px rgba(15, 23, 42, 0.35)"
+  dark:
+    colors:
+      background: "#020617"
+      surface: "#0f172a"
+      surfaceAlt: "#1e293b"
+      text: "#e2e8f0"
+      textMuted: "#94a3b8"
+      primary: "#60a5fa"
+      primaryContrast: "#020617"
+      accent: "#2dd4bf"
+      border: "#1f2937"
+    shadows:
+      medium: "0 24px 40px -20px rgba(15, 23, 42, 0.9)"
+typography:
+  fontFamily: "'Inter', 'Segoe UI', system-ui, sans-serif"
+  headingFamily: "'Inter Tight', 'Segoe UI', system-ui, sans-serif"
+  baseSize: 16
+  lineHeights:
+    snug: 1.25
+    normal: 1.6
+spacing:
+  2xs: 4
+  xs: 8
+  sm: 12
+  md: 16
+  lg: 24
+  xl: 32
+  2xl: 48
+  3xl: 72
+radii:
+  sm: 8
+  md: 16
+  pill: 999
+layout:
+  contentWidth: 1120
+  sectionGap: 160
+  navHeight: 72
+  maxWidthNarrow: 720
+shadows:
+  floating: "0 30px 80px -50px rgba(2, 6, 23, 0.6)"
