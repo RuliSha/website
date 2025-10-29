@@ -3,4 +3,4 @@ User-agent: *
 Disallow:
 
 # Point crawlers to the sitemap
-Sitemap: https://rulisha.github.io/website/sitemap.xml
+Sitemap: https://RuliSha.github.io/website/sitemap.xml
